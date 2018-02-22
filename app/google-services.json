@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "956751968585",
+    "firebase_url": "https://dewarder-messenger.firebaseio.com",
+    "project_id": "dewarder-messenger",
+    "storage_bucket": "dewarder-messenger.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:956751968585:android:1a59e7e4e5a7ba71",
+        "android_client_info": {
+          "package_name": "com.dewarder.messenger"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "956751968585-cj0trrlv4o51grh15sto87p8qkq002d7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBlqtvaNheZKFZl3o1O-EFrDxSMDVthDMw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
