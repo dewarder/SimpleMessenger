@@ -1,16 +1,19 @@
 package com.dewarder.messenger.ui.login
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.EditText
 import com.dewarder.messenger.R
 import com.dewarder.messenger.base.BaseActivity
 import dagger.android.AndroidInjection
+import timber.log.Timber
 
 class LoginUsernameActivity : BaseActivity<LoginUsernameViewModel>() {
 
-    lateinit var usernameInput: EditText
-    lateinit var proceedButton: View
+    private lateinit var usernameInput: EditText
+    private lateinit var proceedButton: View
 
     override fun injectComponents() = AndroidInjection.inject(this)
 
@@ -30,6 +33,7 @@ class LoginUsernameActivity : BaseActivity<LoginUsernameViewModel>() {
 
     override fun onViewModelCreated(viewModel: LoginUsernameViewModel) {
         viewModel.emailExist.observe { (exist, email) ->
+            Timber.v("email %s, exist %b", email, exist)
             if (exist) {
                 goToLoginPasswordScreen(email)
             }
@@ -43,5 +47,14 @@ class LoginUsernameActivity : BaseActivity<LoginUsernameViewModel>() {
                         email = email
                 )
         )
+    }
+
+    companion object {
+
+        fun start(context: Context) {
+            context.startActivity(
+                    Intent(context, LoginUsernameActivity::class.java)
+            )
+        }
     }
 }

@@ -1,5 +1,6 @@
 package com.dewarder.messenger.di
 
+import com.dewarder.messenger.ui.chat.ChatListActivity
 import com.dewarder.messenger.ui.login.LoginPasswordActivity
 import com.dewarder.messenger.ui.login.LoginUsernameActivity
 import com.dewarder.messenger.ui.splash.SplashActivity
@@ -17,4 +18,7 @@ interface ActivityModule {
 
     @ContributesAndroidInjector
     fun bindLoginPasswordActivity(): LoginPasswordActivity
+
+    @ContributesAndroidInjector
+    fun bindChatListActivity(): ChatListActivity
 }
