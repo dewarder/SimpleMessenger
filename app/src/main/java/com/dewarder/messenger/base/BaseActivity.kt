@@ -4,7 +4,9 @@ import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider
 import android.arch.lifecycle.ViewModelProviders
+import android.content.Intent
 import android.os.Bundle
+import android.os.Parcelable
 import android.support.v7.app.AppCompatActivity
 import com.dewarder.messenger.util.observeNonNull
 import javax.inject.Inject
@@ -35,10 +37,22 @@ abstract class BaseActivity<VM : ViewModel> : AppCompatActivity() {
     }
 
     open fun onViewModelCreated(viewModel: VM) {
-
     }
 
     fun <T : Any> LiveData<T>.observe(observer: (T) -> Unit) {
         observeNonNull(this@BaseActivity, observer)
+    }
+
+    fun <T : ArgumentsContainer> getArguments(): T =
+            intent.getParcelableExtra(EXTRA_ARGUMENTS)
+
+    interface ArgumentsContainer : Parcelable
+
+    companion object {
+
+        private const val EXTRA_ARGUMENTS = "EXTRA_ARGUMENTS"
+
+        fun Intent.putArguments(arguments: ArgumentsContainer): Intent =
+                putExtra(EXTRA_ARGUMENTS, arguments)
     }
 }

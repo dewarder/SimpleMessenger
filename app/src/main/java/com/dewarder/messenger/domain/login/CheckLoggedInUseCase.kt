@@ -3,7 +3,7 @@ package com.dewarder.messenger.domain.login
 import io.reactivex.Flowable
 import javax.inject.Inject
 
-class IsLoggedInUseCase @Inject constructor(
+class CheckLoggedInUseCase @Inject constructor(
         private val loginRepository: LoginRepository
 ) {
 

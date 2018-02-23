@@ -1,5 +1,6 @@
 package com.dewarder.messenger.di
 
+import com.dewarder.messenger.ui.login.LoginPasswordActivity
 import com.dewarder.messenger.ui.login.LoginUsernameActivity
 import com.dewarder.messenger.ui.splash.SplashActivity
 import dagger.Module
@@ -13,4 +14,7 @@ interface ActivityModule {
 
     @ContributesAndroidInjector
     fun bindLoginUsernameActivity(): LoginUsernameActivity
+
+    @ContributesAndroidInjector
+    fun bindLoginPasswordActivity(): LoginPasswordActivity
 }

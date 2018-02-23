@@ -1,6 +1,7 @@
 package com.dewarder.messenger.data.login
 
 import com.dewarder.messenger.domain.login.LoginRepository
+import com.dewarder.messenger.util.firebase.toFlowable
 import com.google.firebase.auth.FirebaseAuth
 import io.reactivex.Flowable
 import javax.inject.Inject
@@ -12,16 +13,13 @@ class FirebaseLoginRepository @Inject constructor(
     override fun isLoggedIn(): Flowable<Boolean> =
             Flowable.fromCallable { firebaseAuth.currentUser != null }
 
-    override fun checkEmail(email: String): Flowable<Boolean> {
-        return Flowable.fromPublisher { publisher ->
+    override fun checkEmail(email: String): Flowable<Boolean> =
             firebaseAuth.fetchProvidersForEmail(email)
-                    .addOnCompleteListener { task ->
-                        if (task.isSuccessful) {
-                            publisher.onNext(task.result.providers.orEmpty().isNotEmpty())
-                        } else {
-                            publisher.onError(task.exception!!)
-                        }
-                    }
-        }
-    }
+                    .toFlowable()
+                    .map { result -> result.providers.orEmpty().isNotEmpty() }
+
+    override fun login(email: String, password: String): Flowable<Boolean> =
+            firebaseAuth.signInWithEmailAndPassword(email, password)
+                    .toFlowable()
+                    .map { result -> result.user != null }
 }

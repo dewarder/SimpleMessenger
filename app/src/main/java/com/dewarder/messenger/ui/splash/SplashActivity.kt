@@ -18,13 +18,13 @@ class SplashActivity : BaseActivity<SplashViewModel>() {
             if (isLoggedIn) {
                 TODO()
             } else {
-                openLoginUsernameScreen()
+                goToLoginUsernameScreen()
             }
             finish()
         }
     }
 
-    private fun openLoginUsernameScreen() {
+    private fun goToLoginUsernameScreen() {
         startActivity(Intent(this, LoginUsernameActivity::class.java))
     }
 }

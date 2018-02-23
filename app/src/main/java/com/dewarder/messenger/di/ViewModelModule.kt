@@ -2,6 +2,7 @@ package com.dewarder.messenger.di
 
 import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider
+import com.dewarder.messenger.ui.login.LoginPasswordViewModel
 import com.dewarder.messenger.ui.login.LoginUsernameViewModel
 import com.dewarder.messenger.ui.splash.SplashViewModel
 import dagger.Binds
@@ -23,5 +24,10 @@ interface ViewModelModule {
     @IntoMap
     @ViewModelKey(LoginUsernameViewModel::class)
     fun bindLoginUsernameViewModel(viewModel: LoginUsernameViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(LoginPasswordViewModel::class)
+    fun bindLoginPasswordViewModel(viewModel: LoginPasswordViewModel): ViewModel
 
 }
