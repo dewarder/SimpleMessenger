@@ -3,6 +3,7 @@ package com.dewarder.messenger.di
 import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider
 import com.dewarder.messenger.ui.chat.ChatListViewModel
+import com.dewarder.messenger.ui.chat.ChatRoomViewModel
 import com.dewarder.messenger.ui.login.LoginPasswordViewModel
 import com.dewarder.messenger.ui.login.LoginUsernameViewModel
 import com.dewarder.messenger.ui.splash.SplashViewModel
@@ -35,5 +36,10 @@ interface ViewModelModule {
     @IntoMap
     @ViewModelKey(ChatListViewModel::class)
     fun bindChatListViewModel(viewModel: ChatListViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(ChatRoomViewModel::class)
+    fun bindChatRoomViewModel(viewModel: ChatRoomViewModel): ViewModel
 
 }

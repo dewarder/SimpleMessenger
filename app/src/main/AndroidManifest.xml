@@ -21,6 +21,7 @@
         <activity android:name=".ui.login.LoginUsernameActivity"/>
         <activity android:name=".ui.login.LoginPasswordActivity"/>
         <activity android:name=".ui.chat.ChatListActivity"/>
+        <activity android:name=".ui.chat.ChatRoomActivity"/>
 
     </application>
 
